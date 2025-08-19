@@ -22,7 +22,7 @@ const URLShortenerPage = () => {
     const { longUrl, validity, shortcode } = formState[index];
     const newErrors = { ...errors };
 
-    // Basic URL validation
+    
     const urlRegex = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
     if (longUrl && !urlRegex.test(longUrl)) {
       newErrors[`longUrl${index}`] = 'Invalid URL format';
@@ -30,14 +30,14 @@ const URLShortenerPage = () => {
       delete newErrors[`longUrl${index}`];
     }
 
-    // Validity validation
+    
     if (validity && (isNaN(validity) || parseInt(validity) <= 0)) {
       newErrors[`validity${index}`] = 'Validity must be a positive integer';
     } else {
       delete newErrors[`validity${index}`];
     }
 
-    // Shortcode validation
+    
     const alphanumericRegex = /^[a-zA-Z0-9]*$/;
     if (shortcode && !alphanumericRegex.test(shortcode)) {
       newErrors[`shortcode${index}`] = 'Shortcode must be alphanumeric';

@@ -15,14 +15,13 @@ const RedirectPage = () => {
         log('frontend', 'warn', 'redirect', `Attempt to access expired URL: ${shortcode}`);
         window.location.href = '/error/expired'; // A placeholder error page
       } else {
-        // Increment click count for statistics
         mapping.clicks += 1;
         log('frontend', 'info', 'redirect', `Redirecting from ${shortcode} to ${mapping.longUrl}`);
         window.location.href = mapping.longUrl;
       }
     } else {
       log('frontend', 'error', 'redirect', `Shortcode not found: ${shortcode}`);
-      window.location.href = '/error/not-found'; // A placeholder error page
+      window.location.href = '/error/not-found';
     }
   }, [shortcode]);
 
